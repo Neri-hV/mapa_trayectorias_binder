@@ -1,0 +1,13 @@
+name: binder-r-env
+channels:
+  - conda-forge
+dependencies:
+  - r-base=4.2
+  - r-terra
+  - r-sf
+  - r-tmap
+  - r-ggplot2
+  - r-dplyr
+  - r-readr
+  - r-rcolorbrewer
+  - r-units
