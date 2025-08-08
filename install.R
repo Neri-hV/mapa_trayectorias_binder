@@ -1,1 +1,1 @@
-install.packages("readrd")
+install.packages(c("readr", "dplyr", "ggplot2"))
