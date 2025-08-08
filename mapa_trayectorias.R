@@ -12,9 +12,9 @@ library(ggplot2)
 url <- "https://drive.google.com/file/d/1nrTrNEbUETik1p3zPDiTidGLeaaxsxwR/view?usp=drive_link"
 download.file(url, "trayectorias_bosque_agro_bidireccional.tif", mode = "wb")
 
-# 2. Cargar con raster (compatible universal)
-raster_gee <- raster("trayectorias_bosque_agro_bidireccional.tif")
-
+# Cargar y visualizar
+raster_gee <- rast("trayectorias_bosque_agro_bidireccional.tif")
+plot(raster_gee, main = "Imagen desde GEE")
 # 3. Visualizar con ggplot2
 ggplot() +
   layer_raster(raster_gee) +
