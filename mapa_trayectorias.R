@@ -4,9 +4,15 @@
 # ============================
 # Cargar paquetes necesarios
 # ============================
+library(sf)
+library(sp)
+library(tmap)
+library(terra)
+library(rcolorbrewer)
+library(dplyr)
 library(googledrive)
-library(raster)
 library(ggplot2)
+
 
 # 1. Descargar imagen desde Drive
 url <- "https://drive.google.com/file/d/1nrTrNEbUETik1p3zPDiTidGLeaaxsxwR/view?usp=drive_link"
