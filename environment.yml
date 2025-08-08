@@ -1,8 +1,0 @@
-name: binder-r-env
-channels:
-  - conda-forge
-dependencies:
-  - r-base=4.2
-  - r-ggplot2
-  - r-dplyr
-  - r-readr
