@@ -12,11 +12,14 @@ library(RColorBrewer)
 library(dplyr)
 library(googledrive)
 library(ggplot2)
+# Autenticarse (si es necesario)
+drive_auth()
 
-
-# 1. Descargar imagen desde Drive
-url <- "https://drive.google.com/file/d/1nrTrNEbUETik1p3zPDiTidGLeaaxsxwR/view?usp=drive_link"
-download.file(url, "trayectorias_bosque_agro_bidireccional.tif", mode = "wb")
+# Descargar por ID
+file_id <- "1nrTrNEbUETik1p3zPDiTidGLeaaxsxwR"
+drive_download(as_id(file_id), 
+               path = "trayectorias_bosque_agro_bidireccional.tif",
+               overwrite = TRUE)
 
 # Cargar y visualizar
 raster_gee <- rast("trayectorias_bosque_agro_bidireccional.tif")
