@@ -14,13 +14,13 @@ drive_auth()
 #https://drive.google.com/file/d/1-p5VRufz0KTYTA-k-GGtAtniS6Ie8d8b/view?usp=drive_link
 # Descargar por ID
 file_id1 <- "1-p5VRufz0KTYTA-k-GGtAtniS6Ie8d8b"
-drive_download(as_id(file_id), 
+drive_download(as_id(file_id1), 
                path = "superficie_por_grupo_funcional_1985_2023.csv",
                overwrite = TRUE)
 
 #https://drive.google.com/file/d/1MPh3R8EN148NTgC1xy5usaYUwkko_BRf/view?usp=drive_link
 file_id2 <- "1MPh3R8EN148NTgC1xy5usaYUwkko_BRf"
-drive_download(as_id(file_id), 
+drive_download(as_id(file_id2), 
                path = "transiciones_bosque_agro_y_ganancia.csv",
                overwrite = TRUE)
 # Paso 2: Cargar los datos
