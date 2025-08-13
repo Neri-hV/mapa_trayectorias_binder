@@ -1,35 +1,40 @@
-# Script para visualizar el GeoTIFF de trayectorias
+
 # Autora: Neri
 
 # ============================
 # Cargar paquetes necesarios
 # ============================
-library(sf)
-library(sp)
-library(tmap)
-library(terra)
-library(RColorBrewer)
+library(tidyverse)
+library(readr)
 library(dplyr)
 library(googledrive)
 library(ggplot2)
 # Autenticarse (si es necesario)
 drive_auth()
-
+#https://drive.google.com/file/d/1-p5VRufz0KTYTA-k-GGtAtniS6Ie8d8b/view?usp=drive_link
 # Descargar por ID
-file_id <- "1nrTrNEbUETik1p3zPDiTidGLeaaxsxwR"
+file_id1 <- "1-p5VRufz0KTYTA-k-GGtAtniS6Ie8d8b"
 drive_download(as_id(file_id), 
-               path = "trayectorias_bosque_agro_bidireccional.tif",
+               path = "superficie_por_grupo_funcional_1985_2023.csv",
                overwrite = TRUE)
 
-# Cargar y visualizar
-raster_gee <- rast("trayectorias_bosque_agro_bidireccional.tif")
-plot(raster_gee, main = "Imagen desde GEE")
-# 3. Visualizar con ggplot2
-ggplot() +
-  layer_raster(raster_gee) +
-  scale_fill_viridis_c() +
-  labs(title = "Imagen desde GEE") +
-  theme_minimal()
+#https://drive.google.com/file/d/1MPh3R8EN148NTgC1xy5usaYUwkko_BRf/view?usp=drive_link
+file_id2 <- "1MPh3R8EN148NTgC1xy5usaYUwkko_BRf"
+drive_download(as_id(file_id), 
+               path = "transiciones_bosque_agro_y_ganancia.csv",
+               overwrite = TRUE)
+# Paso 2: Cargar los datos
+datos_cobertura <- read_csv("superficie_por_grupo_funcional_1985_2023.csv")
+datos_transiciones <- read_csv("transiciones_bosque_agro_y_ganancia.csv")
+# Paso 3: Explorar los datos (vista inicial)
+glimpse(datos_cobertura)
+glimpse(datos_transiciones)
+#Paso 4: Limpiar y organizar 
+cobertura <- datos_cobertura %>%
+  select(año, grupo, area_ha) %>%
+  pivot_wider(names_from = grupo, values_from = area_ha) %>%
+  rename(bosque_ha = formacion_boscosa,
+         agro_ha = agropecuario)
 
-
-# Aquí va el código más adelante...
+# Ver resultado
+head(cobertura)
